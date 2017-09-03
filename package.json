@@ -4,11 +4,13 @@
   "description": "express mongo crud",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "nodemon": "^1.11.0"
   }
 }

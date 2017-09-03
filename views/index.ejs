@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-	<meta charset='UTF-8'>
+	<meta charset="UTF-8">
 	<title>Node Express app</title>
 </head>
 	<body>
@@ -13,10 +13,15 @@
       </li>
     <% } %>
     </ul>
-		<form action='/quotes' method='POST'>
-			<input type='text' placeholder='name' name='name'>
-			<input type='text' placeholder='quote' name='quote'>
+		<form action="/quotes" method="POST">
+			<input type="text" placeholder="name" name="name">
+			<input type="text" placeholder="quote" name="quote">
 			<button></button>
 		</form>
+    <div>
+      <h2>Replace latest quote</h2>
+      <button id="update">Update</button>
+    </div>
+    <script src="main.js"></script>
 	</body>
 </html>

@@ -15,6 +15,8 @@ MongoClient.connect('mongodb://jessicabarclay:pass@ds123614.mlab.com:23614/quote
 
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static('public'))
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
 	db.collection('quotes').find().toArray(function(err, result) {
@@ -31,3 +33,19 @@ app.post('/quotes', (req, res) => {
 		res.redirect('/');
 	});
 });
+
+app.put('/quotes', (req, res) => {
+  db.collection('quotes')
+  .findOneAndUpdate({name: 'Yoda'}, {
+    $set: {
+      name: req.body.name,
+      quote: req.body.quote
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.send(result)
+  })
+})

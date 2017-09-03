@@ -13,10 +13,14 @@ MongoClient.connect('mongodb://jessicabarclay:pass@ds123614.mlab.com:23614/quote
 	});
 });
 
+app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/index.html');
+	db.collection('quotes').find().toArray(function(err, result) {
+		if (err) return console.console.log(err);
+		res.render('index.ejs', {quotes: result})
+	});
 });
 
 app.post('/quotes', (req, res) => {
